@@ -214,15 +214,65 @@ void draw() {
 				// NOTE: To avoid errors on webpage, you can either use floor(j / 4) or (int)(j / 4) to make sure it's an integer.
 				int areaIndex = floor(j / 4);
 				image(soils[areaIndex][4], i * SOIL_SIZE, j * SOIL_SIZE);
-        if(soilHealth[i][j]>15){
-          image(stones[0][(constrain(soilHealth[i][j],0,30)-16)/3],i * SOIL_SIZE, j * SOIL_SIZE);
+        if(soilHealth[i][j] == 0){
+        image(soilEmpty,i * SOIL_SIZE, j * SOIL_SIZE); 
         }
-        if(soilHealth[i][j]>30){
-          image(stones[1][(soilHealth[i][j]-31)/3],i * SOIL_SIZE, j * SOIL_SIZE);
+
+        if(soilHealth[i][j]>12&&soilHealth[i][j]<46) {
+        image(soils[areaIndex][4],i * SOIL_SIZE,j * SOIL_SIZE);
         }
-        if(soilHealth[i][j]<=0){
-          image(soilEmpty,i * SOIL_SIZE, j * SOIL_SIZE);
+        if(soilHealth[i][j]>9&&soilHealth[i][j]<13) {
+        image(soils[areaIndex][3],i * SOIL_SIZE,j * SOIL_SIZE);
         }
+        if(soilHealth[i][j]>6 && soilHealth[i][j]<10) {
+        image(soils[areaIndex][2],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j]>3&& soilHealth[i][j]<7) {
+        image(soils[areaIndex][1],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j]>0&& soilHealth[i][j]<4) {
+        image(soils[areaIndex][0],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        
+        
+        if(soilHealth[i][j] == 30){
+          image(stones[0][4],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j] == 45){
+          image(stones[0][4],i * SOIL_SIZE,j * SOIL_SIZE);
+          image(stones[1][4],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j] >27&&soilHealth[i][j] <46) {
+          image(stones[0][4],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j] >24&&soilHealth[i][j] <28) {
+          image(stones[0][3],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j] >21&&soilHealth[i][j] <25) {
+          image(stones[0][2],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j] >18&&soilHealth[i][j] <22) {
+          image(stones[0][1],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j] >15&&soilHealth[i][j] <19) {
+          image(stones[0][0],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j] >42&& soilHealth[i][j] <46) {
+          image(stones[1][4],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j] >39&& soilHealth[i][j] <43) {
+          image(stones[1][3],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j] >36&& soilHealth[i][j] <40) {
+          image(stones[1][2],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j] >33&& soilHealth[i][j] <37) {
+          image(stones[1][1],i * SOIL_SIZE,j * SOIL_SIZE);
+        }
+        if(soilHealth[i][j] >30&& soilHealth[i][j] <34) {
+          image(stones[1][0],i * SOIL_SIZE,j * SOIL_SIZE);  
+        }
+
 			}
 		}
 

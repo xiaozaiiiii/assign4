@@ -132,17 +132,6 @@ void setup() {
       }
     }
   }
-  
-	// Initialize soidiers and their position
-  for( int i = 0; i < 6; i++){
-    soldierX[i] = int(random(8))*80;
-    soldierY[i] = (int(random(4))+ i*4)*80;
-  }
-	// Initialize cabbages and their position
-  for( int j = 0; j < 6; j++){
-    cabbageX[j] = int(random(8))*80;
-    cabbageY[j] = (int(random(4))+ j*4)*80;
-  }
   //holes
   for(int j = 1; j < SOIL_ROW_COUNT; j++){
     int count = int(random(2)) + 1;//1 or 2
@@ -156,6 +145,17 @@ void setup() {
         soilHealth[col][j]=0;
       }  
     }
+  }
+  
+	// Initialize soidiers and their position
+  for( int i = 0; i < 6; i++){
+    soldierX[i] = int(random(8))*80;
+    soldierY[i] = (int(random(4))+ i*4)*80;
+  }
+	// Initialize cabbages and their position
+  for( int j = 0; j < 6; j++){
+    cabbageX[j] = int(random(8))*80;
+    cabbageY[j] = (int(random(4))+ j*4)*80;
   }
 }
 
@@ -207,13 +207,13 @@ void draw() {
 
 		// Soil
 
-		for(int i = 0; i < soilHealth.length; i++){
-			for (int j = 0; j < soilHealth[i].length; j++) {
+		for(int i = 0; i < 8; i++){
+			for (int j = 0; j < 24; j++) {
 
 				// Change this part to show soil and stone images based on soilHealth value
 				// NOTE: To avoid errors on webpage, you can either use floor(j / 4) or (int)(j / 4) to make sure it's an integer.
-				int areaIndex = (int)(j / 4);
-				image(soils[areaIndex][(constrain(soilHealth[i][j],0,15)-1)/34], i * SOIL_SIZE, j * SOIL_SIZE);
+				int areaIndex = floor(j / 4);
+				image(soils[areaIndex][4], i * SOIL_SIZE, j * SOIL_SIZE);
         if(soilHealth[i][j]>15){
           image(stones[0][(constrain(soilHealth[i][j],0,30)-16)/3],i * SOIL_SIZE, j * SOIL_SIZE);
         }

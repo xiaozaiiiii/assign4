@@ -280,7 +280,8 @@ void draw() {
 		// > Remember to check if playerHealth is smaller than PLAYER_MAX_HEALTH!
     for(int j = 0; j < 6; j++){
       image(cabbage, cabbageX[j], cabbageY[j]);
-      if(playerX == cabbageX[j] && playerY == cabbageY[j]){
+      if(playerX<cabbageX[j]+SOIL_SIZE && playerX+SOIL_SIZE>cabbageX[j] &&
+         playerY<cabbageY[j]+SOIL_SIZE && playerY+SOIL_SIZE>cabbageY[j]){
         if(playerHealth < PLAYER_MAX_HEALTH){
           cabbageX[j] = -80;
           playerHealth++;
@@ -425,13 +426,15 @@ void draw() {
         soldierX[i] = -80;
       }
       image(soldier, soldierX[i], soldierY[i]);
-      if(playerX < soldierX[i] -80 +80 && playerX +80 > soldierX[i] -80
-      && playerY < soldierY[i] +80 && playerY +80 > soldierY[i]){
+      if(playerX<soldierX[i]+SOIL_SIZE && playerX+SOIL_SIZE>soldierX[i] &&
+         playerY<soldierY[i]+SOIL_SIZE && playerY+SOIL_SIZE>soldierY[i]){
         playerX = PLAYER_INIT_X;
         playerY = PLAYER_INIT_Y;
-        soilHealth[4][0]=15;
         playerMoveTimer = 0;
         playerHealth --;
+        playerCol = (int) (playerX / SOIL_SIZE);
+        playerRow = (int) (playerY / SOIL_SIZE);
+        soilHealth[4][0]=15;
       }
     }
 		// Demo mode: Show the value of soilHealth on each soil
